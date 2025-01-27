@@ -3,8 +3,8 @@ from cryptography import x509
 from cryptography.hazmat.backends import default_backend
 
 def load_cert(pem_cert: bytes):
-    """This explains how the function works, path "\\?\C:\hello\do".
-    Is a path "\\?\"
+    """This explains how the function works, path "\\\\?\\C:\\hello\\do".
+    Is a path "\\\\?\\"
     """
     if pem_cert is None:
         print("pem_cert is None")
