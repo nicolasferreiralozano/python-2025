@@ -24,10 +24,12 @@ def load_cert(pem_cert: bytes) -> x509.Certificate:
         raise ValueError("pem_cert cannot be None")
     else:
         cert: x509.Certificate = x509.load_pem_x509_certificate(pem_cert, default_backend())
-        if datetime.now(timezone.utc) > cert.not_valid_after:
-            logging.warning("Certificate has expired")
+        expiry_time = cert.not_valid_after_utc
+        current_time = datetime.now(timezone.utc)
+        if current_time > expiry_time:
+            logging.warning(f"Certificate has expired (expired at {expiry_time}, current time is {current_time})")
         else:
-            logging.info("Certificate is valid")
+            logging.info(f"Certificate is valid until {expiry_time}")
 
 if __name__ == "__main__":
     logging.info("Starting certificate validation")
