@@ -8,9 +8,16 @@ logging.basicConfig(
 from cryptography import x509
 from cryptography.hazmat.backends import default_backend
 
-def load_cert(pem_cert: bytes):
-    """This explains how the function works, path "\\?\C:\hello\do".
-    Is a path "\\?\"
+def load_cert(pem_cert: bytes) -> x509.Certificate:
+    """Load and validate an x509 certificate from PEM-encoded bytes.
+    Args:
+        pem_cert: PEM-encoded certificate bytes
+
+    Returns:
+        x509.Certificate: The loaded certificate object
+
+    Raises:
+        ValueError: If pem_cert is None
     """
     if pem_cert is None:
         logging.error("pem_cert is None")
