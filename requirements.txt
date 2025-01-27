@@ -1,0 +1,2 @@
+cryptography==43.0.3 \
+  --hash=sha256:c2e6fc39c4ab499049df3bdf567f768a723a5e8464816e8f009f121a5a9f4405
