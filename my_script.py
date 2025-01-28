@@ -1,6 +1,11 @@
 from datetime import datetime, timezone
 from cryptography import x509
 from cryptography.hazmat.backends import default_backend
+from distutils.sysconfig import get_python_lib
+
+def load_cert(pem_cert: bytes):
+    python_lib_path = get_python_lib()
+    print("the path is " + python_lib_path)
 
 def load_cert(pem_cert: bytes):
     """This explains how the function works, path "\\?\C:\hello\do".
